@@ -1,0 +1,41 @@
+<!--{{col | json}}-->
+
+<div class="container">
+<div class="row">
+  <div class="col-6"><img src="{{col.photoUrl}}" alt="..." class="w-25 p-3" align=left></div>
+
+  <div class="col-6">
+    <table class="table table-striped">
+
+      <tr>
+        <th scope="col">Matricule</th>
+        <td scope="col">{{col.matricule}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Nom</th>
+        <td>{{col.nom}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Prenom(s)</th>
+        <td>{{col.prenoms}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Email</th>
+        <td>{{col.email}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Date de naissance</th>
+        <td>{{col.dateDeNaissance | date:'dd/MM/yyyy'}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+</div>
+<!--<button type="button" class="btn btn-primary">Modifier</button> -->
+<div class="text-center">
+
+<button (click)="clicCreer($event)">Créer un nouveau collègue</button>
+<button (click)="clicModifier($event)">Modifier</button>
+
+</div>
