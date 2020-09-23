@@ -9,16 +9,27 @@ import { Collegue } from '../models/Collegue';
 })
 export class CollegueComponent implements OnInit {
 
+  modeAffichage = true;
+
+
   @Input() col: Collegue;
 
   constructor() { }
 
-  clicModifier(event) {
-    console.log("Modification du collègue", event);
+  
+
+  clicModifier() {
+    //console.log("Modification du collègue", event);
+    this.modeAffichage = false;
   }
 
-  clicCreer(event) {
-    console.log("Création d'un nouveau collègue", event);
+  clicvalider(): void {
+    this.modeAffichage = true;
+  }
+
+
+  clicCreer() {
+    console.log("Création d'un nouveau collègue");
   }
 
   ngOnInit(): void {

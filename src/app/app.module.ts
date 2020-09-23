@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CollegueComponent } from './collegue/collegue.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CollegueComponent
+    CollegueComponent,
+    RechercheParNomComponent
   ],
   imports: [
     BrowserModule
