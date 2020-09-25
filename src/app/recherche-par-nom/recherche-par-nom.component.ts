@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { listeMatricules } from '../mock/matricules.mock';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-recherche-par-nom',
@@ -13,14 +14,21 @@ export class RechercheParNomComponent implements OnInit {
 
   listeM: string[];
 
-  constructor() { }
-
-
-  rechercher(){
-    this.listeM = listeMatricules;
-  }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
+
+  selectionner(obj: string): void{
+    console.log(obj);
+  }
+
+  rechercher() {
+    this.listeM = listeMatricules;
+    //this.dataService.rechercherParNom('');
+  }
+
+
+
 
 }
