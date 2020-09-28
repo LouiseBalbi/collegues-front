@@ -1,5 +1,8 @@
-<!--{{col | json}}-->
+<div *ngIf="!col" class="alert alert-warning" role="alert">
+  Pas de collègue :-/
+</div>
 
+<ng-container *ngIf="col">
 <div class="container">
   <div class="row">
     <div class="col-md-6"><img src="{{col.photoUrl}}" alt="..." class="w-25 p-3"></div>
@@ -61,3 +64,5 @@
   <button (click)="clicModifier()" *ngIf="modeAffichage">Modifier</button>
     <button (click)="clicvalider()" *ngIf="!modeAffichage">Valider</button>
 </div>
+
+</ng-container>

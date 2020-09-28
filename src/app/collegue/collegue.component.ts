@@ -18,7 +18,7 @@ export class CollegueComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.col = this.dataService.recupererCollegueCourant();
+    this.dataService.recupererCollegueCourant().subscribe(colSelect => this.col = colSelect);
   }
 
   clicModifier() {

@@ -5,17 +5,24 @@
     </div>
     <div class="form-group mx-sm-3 mb-2">
         <label for="input" class="sr-only">Entrez nom</label>
-        <input type="text" class="form-control" id="input" placeholder="Entrez nom">
+        <input type="text" #saisieNom class="form-control" id="input" placeholder="Entrez nom">
     </div>
-    <button (click)="rechercher()" class="btn btn-primary mb-2">Rechercher</button>
+    <button (click)="rechercher(saisieNom.value)" class="btn btn-primary mb-2">Rechercher</button>
 
 </div>
 
 
-<div>
+<div *ngIf="listeM">
     <ul>
-        <Li *ngFor="let obj of listeM">
-            <button (click)="selectionner(obj)">{{obj}}</button>
+        <Li *ngFor="let mat of listeM">
+            <button class="btn btn-link" (click)="selectionner(mat)">{{mat}}</button>
         </Li>
     </ul>
 </div>
+
+<div *ngIf="matriculeNonTrouve" class="alert alert-warning" role="alert">
+    Le nom ne correspond à aucun collègue !
+  </div>
+  <div *ngIf="erreurTechnique" class="alert alert-danger" role="alert">
+    Erreur technique
+  </div>

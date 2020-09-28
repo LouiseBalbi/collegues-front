@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { listeMatricules } from '../mock/matricules.mock';
-import { environment } from '../../environments/environment';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -10,22 +9,36 @@ import { DataService } from '../services/data.service';
 })
 export class RechercheParNomComponent implements OnInit {
 
-  //URL_BACKEND = environment.backendUrl;
-
   listeM: string[];
+
+  matriculeNonTrouve = false;
+  erreurTechnique = false;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
-  selectionner(obj: string): void{
-    console.log(obj);
+  selectionner(matricule: string): void {
+    this.dataService.selectionnerMatricule(matricule)
+      .subscribe(() => { },
+        error => this.erreurTechnique = true);
   }
 
-  rechercher() {
-    this.listeM = listeMatricules;
-    //this.dataService.rechercherParNom('');
+  rechercher(nomSaisi: string) {
+    this.listeM= [];
+    this.dataService.rechercherParNom(nomSaisi).subscribe(matriculesBack => {    
+      this.erreurTechnique = false;
+        if (matriculesBack.length > 0) {
+          this.matriculeNonTrouve = false;
+          this.listeM = matriculesBack
+        } else {
+          this.matriculeNonTrouve = true;
+        }
+
+      },
+        error => this.erreurTechnique = true);
+    
   }
 
 
