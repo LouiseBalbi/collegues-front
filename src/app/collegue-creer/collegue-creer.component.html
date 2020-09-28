@@ -1,23 +1,61 @@
-<form #etatForm="ngForm">
-    <ul>
-        <li>Nom : <input #champNom="ngModel" type="text" name ="nom" [(ngModel)]="collegueCree.nom" required></li>
-        <div *ngIf="champNom.dirty && champNom.invalid">
-            Le nom est obligatoire.
-        </div>
-        
-        <li>Prenom : <input type="text" name="prenom" [(ngModel)]="collegueCree.prenoms" required></li>
-        <li>Date de naissance : <input type="text" name="dateNaissance" [(ngModel)]="dateString" required></li> 
-        <li>Email: <input type="text" name="email" [(ngModel)]="collegueCree.email" required></li> 
-        <li>Photo URL : <input #champPhoto="ngModel" type="text" name="photoUrl" [(ngModel)]="collegueCree.photoUrl" required minlength="7"></li>
-        <div *ngIf="champPhoto.dirty && champPhoto.invalid">
-            La photo est obligatoire.
-        </div>
-    </ul>
+<div class="col-12">
+    <img src="">
+</div>
 
-    <div *ngIf="etatForm.dirty && etatForm.invalid">
-        Le formulaire est invalide.
-    </div>
+<div class="col-12">
+    <form #etatForm="ngForm">
+        <div class="form-group" [ngClass]="{ 'was-validated' : champNom.dirty}">
+            <label for=" nom">Nom</label>
+            <input #champNom="ngModel" type="text" name="nom" [(ngModel)]="collegueCree.nom" class="form-control"
+                required>
+            <div *ngIf="champNom.dirty && champNom.invalid">
+                Le nom est obligatoire.
+            </div>
+        </div>
 
-    <button (click)="valider()">Valider</button>
-  
-</form>
+        <div class="form-group" [ngClass]="{ 'was-validated' : champPrenom.dirty}">
+            <label for=" nom">Prénom</label>
+            <input #champPrenom="ngModel" type="text" name="prenom" [(ngModel)]="collegueCree.prenoms"
+                class="form-control" required>
+            <div *ngIf="champPrenom.dirty && champPrenom.invalid">
+                Le Prénom est obligatoire.
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'was-validated' : champDate.dirty}">
+            <label for=" nom">Date de naissance</label>
+            <input #champDate="ngModel" type="text" name="dateNaissance" [(ngModel)]='collegueCree.dateNaissance'
+                class="form-control" required>
+            <div *ngIf="champDate.dirty && champDate.invalid">
+                La date est obligatoire.
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'was-validated' : champEmail.dirty}">
+            <label for=" nom">Email</label>
+            <input #champEmail="ngModel" type="text" name="email" [(ngModel)]="collegueCree.email" class="form-control"
+                required>
+            <div *ngIf="champEmail.dirty && champEmail.invalid">
+                L'email est obligatoire.
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'was-validated' : champPhoto.dirty}">
+            <label for=" nom">Photo URL</label>
+            <input #champPhoto="ngModel" type="text" name="photoUrl" [(ngModel)]="collegueCree.photoUrl"
+                class="form-control" required minlength="7">
+            <div *ngIf="champPhoto.dirty && champPhoto.invalid">
+                L'url de la photo est obligatoire et doit comporter plus de 7 caractères.
+            </div>
+        </div>
+
+
+        <div *ngIf="etatForm.dirty && etatForm.invalid">
+            Le formulaire est invalide.
+        </div>
+
+        <button [disabled]="etatForm.invalid" (click)="valider()" class="btn btn-primary">Valider</button>
+
+        <div *ngIf="erreurTechnique" class="alert alert-danger" role="alert">
+            Erreur technique
+          </div>    
+
+    </form>
+</div>

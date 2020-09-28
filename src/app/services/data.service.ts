@@ -52,18 +52,21 @@ export class DataService {
         );
     }
 
-    body = {
-      "nom": "Smith",
-      "prenoms": "John",
-      "dateNaissance": "2000-01-01",
-      "email": "email",
-      "photoUrl": "url"
-  };
 
-    creerCollegue(collegueCree: CollegueCree): any {
-      this.http.post(this.URL_BACKEND + '/collegues', collegueCree).subscribe( result => console.log(result));
+    // creerCollegue(collegueCree: CollegueCree): any {
+    //   this.http.post(this.URL_BACKEND + '/collegues', collegueCree).subscribe( result => console.log(result));
 
+    // }
+
+    creerCollegue(collegueCree: CollegueCree): Observable<Collegue> {
+      return this.http.post<CollegueBack>(
+        this.URL_BACKEND + '/collegues',
+        collegueCree)
+        .pipe(
+          map(colBack => new Collegue(colBack.matricule, colBack.nom, colBack.prenom, colBack.email,
+            new Date(colBack.dateNaissance), colBack.photoUrl)));
     }
+  
   
 
 }

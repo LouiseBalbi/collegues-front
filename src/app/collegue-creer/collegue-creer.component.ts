@@ -13,7 +13,8 @@ import { DataService } from '../services/data.service';
 export class CollegueCreerComponent implements OnInit {
 
   collegueCree: CollegueCree = {};
-  dateString: string;
+  erreurTechnique = false;
+  
 
   constructor(private dataService: DataService) { }
 
@@ -22,9 +23,14 @@ export class CollegueCreerComponent implements OnInit {
 
   valider(): void{
     console.log(this.collegueCree);
-    this.collegueCree.dateNaissance = new Date(this.dateString);
-    console.log(this.collegueCree);
-    this.dataService.creerCollegue(this.collegueCree);
+    //this.collegueCree.dateNaissance = new Date(this.dateString);
+    //console.log(this.collegueCree);
+    this.dataService.creerCollegue(this.collegueCree).subscribe(
+      col => {
+        this.collegueCree = {};
+      },
+      error => this.erreurTechnique = true
+    );
   }
 
 }

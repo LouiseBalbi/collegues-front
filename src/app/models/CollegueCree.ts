@@ -1,7 +1,7 @@
 export interface CollegueCree {
   nom?: string;
   prenoms?: string;
-  dateNaissance?: Date;
+  dateNaissance?: string;
   email?: string;
   photoUrl?: string;
 }
