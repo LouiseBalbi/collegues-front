@@ -1,11 +1,12 @@
+<app-menu></app-menu>
+
 <h1 class="text-center">Administration Collegue</h1>
 
 <div class="row"><br></div>
 
-   <div class="row">
-    <app-collegue class="col-12 col-md-6" [col]="collegueExemple"></app-collegue>
-    <app-recherche-par-nom class="col-12 col-md-6"></app-recherche-par-nom>
-</div> 
+<main>
+    <router-outlet></router-outlet>
+
+</main>
 
 
-<app-collegue-creer></app-collegue-creer>

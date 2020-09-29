@@ -14,7 +14,6 @@ export class CollegueCreerComponent implements OnInit {
 
   collegueCree: CollegueCree = {};
   erreurTechnique = false;
-  
 
   constructor(private dataService: DataService) { }
 
