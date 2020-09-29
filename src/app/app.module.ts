@@ -20,6 +20,7 @@ export const routes: Routes = [
   { path: 'gallerie', component: PageGallerieComponent },
   { path: 'apropos', component: PageAproposComponent },
   { path: 'creer', component: PageCreerCollegueComponent },
+  { path: 'collegue', component: CollegueComponent },
   { path: '', pathMatch: 'full', redirectTo: '/accueil' }
 ];
 

@@ -22,8 +22,6 @@ export class CollegueCreerComponent implements OnInit {
 
   valider(): void{
     console.log(this.collegueCree);
-    //this.collegueCree.dateNaissance = new Date(this.dateString);
-    //console.log(this.collegueCree);
     this.dataService.creerCollegue(this.collegueCree).subscribe(
       col => {
         this.collegueCree = {};

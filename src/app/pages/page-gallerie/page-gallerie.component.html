@@ -1,1 +1,10 @@
-<p>page-gallerie works!</p>
+<h1 class="text-center">Gallerie</h1>
+<div class="row">
+    <div class="col-4" *ngFor="let photo of photos">
+        <img src="{{photo.photoUrl}}" alt="">
+        <button class="btn btn-link" (click)="selectionner(photo.matricule)" routerLink="/collegue">{{photo.matricule}}</button>
+    </div>
+</div>
+
+
+

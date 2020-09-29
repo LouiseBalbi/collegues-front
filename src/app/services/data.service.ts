@@ -68,5 +68,8 @@ export class DataService {
     }
   
   
+    afficherPageGallerie(){
+      return this.http.get<any []>(this.URL_BACKEND + '/collegues/photos')
+    }
 
 }
