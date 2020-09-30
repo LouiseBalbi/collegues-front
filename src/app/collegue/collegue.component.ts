@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { DataService } from '../services/data.service';
 
+
+
 @Component({
   selector: 'app-collegue',
   templateUrl: './collegue.component.html',
@@ -11,6 +13,10 @@ import { DataService } from '../services/data.service';
 export class CollegueComponent implements OnInit {
 
   modeAffichage = true;
+  public newEmail: string = '';  
+  public newUrl: string = '';
+
+  public test = "toto";
 
   @Input() col: Collegue;
 
@@ -22,11 +28,18 @@ export class CollegueComponent implements OnInit {
   }
 
   clicModifier() {
-    this.modeAffichage = false;
+    this.modeAffichage = false;   
   }
 
   clicvalider(): void {
+    console.log(this.newEmail);
+    console.log(this.newUrl);
+    
+    this.dataService.modifierCollegue(this.newEmail, this.newUrl).subscribe();
+    
+    
     this.modeAffichage = true;
+
   }
 
 

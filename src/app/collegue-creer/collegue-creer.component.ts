@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Collegue } from '../models/Collegue';
 import { CollegueCree } from '../models/CollegueCree';
 import { DataService } from '../services/data.service';
 
@@ -19,6 +20,7 @@ export class CollegueCreerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   valider(): void{
     console.log(this.collegueCree);

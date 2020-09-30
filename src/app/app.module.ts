@@ -14,13 +14,14 @@ import { PageAccueilComponent } from './pages/page-accueil/page-accueil.componen
 import { PageGallerieComponent } from './pages/page-gallerie/page-gallerie.component';
 import { PageAproposComponent } from './pages/page-apropos/page-apropos.component';
 import { PageCreerCollegueComponent } from './pages/page-creer-collegue/page-creer-collegue.component';
+import { MatriculeSelectionneComponent } from './matricule-selectionne/matricule-selectionne.component';
 
 export const routes: Routes = [
   { path: 'accueil', component: PageAccueilComponent },
   { path: 'gallerie', component: PageGallerieComponent },
   { path: 'apropos', component: PageAproposComponent },
   { path: 'creer', component: PageCreerCollegueComponent },
-  { path: 'collegue', component: CollegueComponent },
+  { path: 'gallerie/:matricule', component: MatriculeSelectionneComponent },
   { path: '', pathMatch: 'full', redirectTo: '/accueil' }
 ];
 
@@ -35,6 +36,7 @@ export const routes: Routes = [
     PageGallerieComponent,
     PageAproposComponent,
     PageCreerCollegueComponent,
+    MatriculeSelectionneComponent
   ],
   imports: [
     BrowserModule,

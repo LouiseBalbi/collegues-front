@@ -20,14 +20,22 @@
             <div *ngIf="champPrenom.dirty && champPrenom.invalid">
                 Le Prénom est obligatoire.
             </div>
+
         </div>
         <div class="form-group" [ngClass]="{ 'was-validated' : champDate.dirty}">
             <label for=" nom">Date de naissance</label>
             <input #champDate="ngModel" type="text" name="dateNaissance" [(ngModel)]='collegueCree.dateNaissance'
                 class="form-control" required>
+            <!--<input [(ngModel)]='collegueCree.dateNaissance' #champDate="ngModel" type="text" name='date' ngbDatepicker
+                #d="ngbDatepicker" />
+            <button (click)="d.toggle()">Choisir</button>-->
+
             <div *ngIf="champDate.dirty && champDate.invalid">
                 La date est obligatoire.
             </div>
+
+
+
         </div>
         <div class="form-group" [ngClass]="{ 'was-validated' : champEmail.dirty}">
             <label for=" nom">Email</label>
@@ -55,7 +63,7 @@
 
         <div *ngIf="erreurTechnique" class="alert alert-danger" role="alert">
             Erreur technique
-          </div>    
+        </div>
 
     </form>
 </div>

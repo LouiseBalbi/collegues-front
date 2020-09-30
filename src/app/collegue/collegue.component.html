@@ -3,66 +3,72 @@
 </div>
 
 <ng-container *ngIf="col">
-<div class="container">
-  <div class="row">
-    <div class="col-md-6"><img src="{{col.photoUrl}}" alt="..." class="w-25 p-3"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6"><img src="{{col.photoUrl}}" alt="..." class="w-75 p-3"></div>
 
-    <div class="col-md-6">
-      <form>
-      <table class="table table-striped">
+      <div class="col-md-6">
+   
+          <table class="table table-striped">
 
-        <tr>
-          <th scope="col">Matricule</th>
-          <td scope="col">{{col.matricule}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Nom</th>
-          <td>{{col.nom | uppercase}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Prenom(s)</th>
-          <td>{{col.prenoms}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Email</th>
-          <td>{{col.email}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Date de naissance</th>
-          <td *ngIf="modeAffichage">{{col.dateDeNaissance | date:'dd/MM/yyyy'}}</td>
-          <td><ng-container *ngIf="!modeAffichage">           
-              <div class="form-group">
-                <label for="exampleInputDate"></label>
-                <input type="dateDeNaissance" class="form-control" id="exampleDate">
-              </div>           
-          </ng-container>
-        </td>
-        </tr>
-        <ng-container *ngIf="!modeAffichage">
-          <tr>
-            <th scope="row">Photo URL</th>
-            <td>
-              <ng-container *ngIf="!modeAffichage">           
-                <div class="form-group">
-                  <label for="examplePhotoUrl"></label>
-                  <input type="PhotoUrl" class="form-control" id="examplePhotoUrl">
-                </div>           
+            <tr>
+              <th scope="col">Matricule</th>
+              <td scope="col">{{col.matricule}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Nom</th>
+              <td>{{col.nom | uppercase}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Prenom(s)</th>
+              <td>{{col.prenoms}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Date de naissance</th>
+              <td>{{col.dateDeNaissance | date:'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td *ngIf="modeAffichage">{{col.email}}</td>
+              <td>
+                <ng-container *ngIf="!modeAffichage">
+                  <div class="form-group">
+                    <label for="exampleInputEmail"></label>
+                    <input #champEmail="ngModel" type="text" [(ngModel)]="this.newEmail">
+                    <div *ngIf="champEmail.invalid">
+                      L'email est obligatoire.
+                  </div>
+                  </div>
+                </ng-container>
+              </td>
+            </tr>
+            <ng-container *ngIf="!modeAffichage">
+              <tr>
+                <th scope="row">Photo URL</th>
+                <td>                 
+                    <div class="form-group">
+                      <label for="examplePhotoUrl"></label>
+                      <input #champPhoto="ngModel" type="text" class="form-control" minlength="7" [(ngModel)]="newUrl">
+                      <div *ngIf="champPhoto.invalid">
+                        L'URL de la photo est obligatoire.
+                    </div>
+                    </div>                  
+                </td>
+              </tr>
             </ng-container>
-            </td>
-          </tr>
-        </ng-container>
-      </table>
-    </form>
+          </table>
+
+      </div>
     </div>
+
   </div>
+  <!--<button type="button" class="btn btn-primary">Modifier</button> -->
+  <div class="text-center">
 
-</div>
-<!--<button type="button" class="btn btn-primary">Modifier</button> -->
-<div class="text-center">
-
-  <button (click)="clicCreer()" *ngIf="modeAffichage">Créer un nouveau collègue</button>
-  <button (click)="clicModifier()" *ngIf="modeAffichage">Modifier</button>
-    <button (click)="clicvalider()" *ngIf="!modeAffichage">Valider</button>
-</div>
+    <button (click)="clicCreer()" *ngIf="modeAffichage" routerLink="/creer" class="btn btn-outline-primary">Créer un
+      nouveau collègue</button>
+    <button (click)="clicModifier()" *ngIf="modeAffichage" class="btn btn-outline-primary">Modifier</button>
+    <button (click)="clicvalider()" *ngIf="!modeAffichage" class="btn btn-outline-primary">Valider</button>
+  </div>
 
 </ng-container>
