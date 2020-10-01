@@ -31,7 +31,7 @@
           <div class="col card-text">{{col.email}}</div>
         </div>
 
-        <div #etatform>
+
           <ng-container *ngIf="!modeAffichage">
 
             <div class="form-group" [ngClass]="{ 'was-validated' : champEmail.dirty}">
@@ -47,8 +47,7 @@
 
 
         <ng-container *ngIf="!modeAffichage">
-          <div>
-            
+
               <div class="form-group" [ngClass]="{ 'was-validated' : champPhoto.dirty}">
                 <label for="examplePhotoUrl">Photo URL</label>
                 <input #champPhoto="ngModel" type="text" class="form-control" minlength="7" [(ngModel)]="newUrl" required>
@@ -56,12 +55,9 @@
                   L'URL de la photo est obligatoire et doit contenir au moins 7 caractères.
                 </div>
               </div>
-            
-          </div>
-
 
         </ng-container>
-        </div>
+        
 
       </div>
     </div>
