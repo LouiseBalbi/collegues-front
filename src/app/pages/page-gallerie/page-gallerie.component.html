@@ -1,6 +1,6 @@
 <h1 class="text-center">Gallerie</h1>
 <div class="row">
-    <div class="col-4" *ngFor="let photo of photos">
+    <div class="col-12 col-lg-6 col-xl-4" style="max-width: fit-content;" class="text-center" *ngFor="let photo of photos">
         <div><button class="btn btn-link" routerLink="/gallerie/{{photo.matricule}}"><img src="{{photo.photoUrl}}" alt=""></button></div>
         <button class="btn btn-link" routerLink="/gallerie/{{photo.matricule}}">{{photo.matricule}}</button>
     </div>
